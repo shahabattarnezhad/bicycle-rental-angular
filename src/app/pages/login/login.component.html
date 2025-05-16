@@ -1,1 +1,43 @@
-<p>login works!</p>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <i class="bi bi-person-circle" style="font-size: 3rem; color: #0d6efd;"></i>
+            <h4 class="mt-2">ورود به حساب کاربری</h4>
+        </div>
+        <form [formGroup]="loginForm" (ngSubmit)="loginHandler()">
+            <div class="mb-3">
+                <label for="username" class="form-label">نام کاربری</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" formControlName="username" class="form-control" id="username"
+                        placeholder="نام کاربری خود را وارد کنید">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">رمز عبور</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input formControlName="password" [type]="showPassword ? 'text' : 'password'" class="form-control"
+                        id="password" placeholder="رمز عبور خود را وارد کنید">
+                    <button type="button" class="btn border border-start-0 bg-white" tabindex="-1"
+                        (click)="togglePasswordVisibility()">
+                        <i class="bi" [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'"></i>
+                    </button>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="isLoadinhg">
+                <span *ngIf="isLoadinhg" class="spinner-border spinner-border-sm me-2" role="status"
+                    aria-hidden="true"></span>
+                <span *ngIf="!isLoadinhg">ورود</span>
+                <span *ngIf="isLoadinhg">در حال ورود...</span>
+            </button>
+        </form>
+        <div class="text-center mt-3">
+            <a routerLink="/forgot-password" class="text-decoration-none">رمز عبور را فراموش کرده‌اید؟</a>
+        </div>
+        <div class="text-center mt-3">
+            <span>حساب کاربری ندارید؟</span>
+            <a routerLink="/register" class="text-decoration-none ms-1">ثبت نام کنید</a>
+        </div>
+    </div>
+</div>

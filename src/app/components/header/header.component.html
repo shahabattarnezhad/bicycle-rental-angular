@@ -21,8 +21,8 @@
             </ul>
             <!-- ورود/خروج سمت چپ -->
             <div>
-                <button *ngIf="!isLoggedIn" class="btn btn-outline-primary" (click)="login()">ورود</button>
-                <button *ngIf="isLoggedIn" class="btn btn-outline-danger" (click)="logout()">خروج</button>
+                <button *ngIf="!isLoggedIn" class="btn btn-outline-primary" routerLink="/login" (click)="login()">ورود</button>
+                <button *ngIf="isLoggedIn" class="btn btn-outline-danger" routerLink="/register" (click)="logout()">خروج</button>
             </div>
         </div>
     </nav>

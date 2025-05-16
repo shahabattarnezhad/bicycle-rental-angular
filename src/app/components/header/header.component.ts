@@ -1,9 +1,10 @@
 import { NgIf } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-header',
-  imports: [NgIf],
+  imports: [NgIf, RouterModule],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })
@@ -16,10 +17,10 @@ export class HeaderComponent {
   }
 
   login() {
-    console.log('Login clicked');
+    this.isLoggedIn = true;
   }
 
   logout() {
-    console.log('Logout clicked');
+    this.isLoggedIn = false;
   }
 }

@@ -1,1 +1,44 @@
-<p>register works!</p>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
+    <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
+        <div class="text-center mb-4">
+            <i class="bi bi-person-plus" style="font-size: 3rem; color: #0d6efd;"></i>
+            <h4 class="mt-2">ثبت‌نام کاربر جدید</h4>
+        </div>
+        <form>
+            <div class="mb-3">
+                <label for="username" class="form-label">نام کاربری</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" id="username" placeholder="نام کاربری خود را وارد کنید">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">ایمیل</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                    <input type="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">رمز عبور</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" id="password" placeholder="رمز عبور خود را وارد کنید">
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="confirmPassword" class="form-label">تکرار رمز عبور</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                    <input type="password" class="form-control" id="confirmPassword"
+                        placeholder="رمز عبور را دوباره وارد کنید">
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">ثبت‌نام</button>
+        </form>
+        <div class="text-center mt-3">
+            <span>حساب کاربری دارید؟</span>
+            <a routerLink="/login" class="text-decoration-none ms-1">وارد شوید</a>
+        </div>
+    </div>
+</div>
