@@ -11,6 +11,8 @@ import { RouterModule } from '@angular/router';
 export class HeaderComponent {
 
   isLoggedIn = false;
+  isAdmin = false;
+  isUser = false;
 
   get imageLogo() {
     return '/assets/images/bicycle.svg';

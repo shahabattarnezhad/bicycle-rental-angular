@@ -1,29 +1,63 @@
-<div class="container">
-    <nav class="navbar">
-        <div class="container-fluid d-flex justify-content-between align-items-center">
-            <!-- لوگو سمت راست -->
-            <a class="navbar-brand d-flex align-items-center" href="#">
-                <img [src]="imageLogo" alt="Logo" width="40" height="40">
-                <span class="ms-2">بایسیکلران</span>
-            </a>
-            <!-- منوها وسط -->
-            <ul class="navbar-nav flex-row mx-auto">
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">خانه
-                </a>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container">
+        <a class="navbar-brand d-flex" routerLink="/home">
+            <img [src]="imageLogo" alt="Logo" width="40" height="40">
+            <span class="ms-2">بایسیکلران</span>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li class="nav-item mx-2" *ngIf="!isLoggedIn || (!isAdmin && !isUser)">
+                    <a class="nav-link active" routerLink="/">خانه</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">دوچرخه‌ها</a>
+                <li class="nav-item mx-2" *ngIf="!isLoggedIn || (!isAdmin && !isUser)">
+                    <a class="nav-link" routerLink="/about">درباره ما</a>
                 </li>
-                <li class="nav-item mx-2">
-                    <a class="nav-link" href="#">درباره ما</a>
+                <li class="nav-item mx-2" *ngIf="!isLoggedIn || (!isAdmin && !isUser)">
+                    <a class="nav-link" routerLink="/contact">تماس با ما</a>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isLoggedIn && isAdmin">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        مدیریت
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/users">کاربران</a></li>
+                        <li><a class="dropdown-item" routerLink="/bicycles">دوچرخه‌ها</a></li>
+                        <li><a class="dropdown-item" routerLink="/gps">GPS ها</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" routerLink="/documents">اسناد</a></li>
+                        <li><a class="dropdown-item" routerLink="/payments">پرداخت ها</a></li>
+                        <li><a class="dropdown-item" routerLink="/reservations">رزروها</a></li>
+                        <li><a class="dropdown-item" routerLink="/stations">ایستگاه ها</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown" *ngIf="isLoggedIn && isUser">
+                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        aria-expanded="false">
+                        حساب من
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" routerLink="/my-documents">اسناد من</a></li>
+                        <li><a class="dropdown-item" routerLink="/my-payments">پرداخت های من</a></li>
+                        <li>
+                            <hr class="dropdown-divider">
+                        </li>
+                        <li><a class="dropdown-item" routerLink="/my-reservations">رزروهای من</a></li>
+                        <li><a class="dropdown-item" routerLink="/profile">پروفایل من</a></li>
+                    </ul>
                 </li>
             </ul>
-            <!-- ورود/خروج سمت چپ -->
             <div>
-                <button *ngIf="!isLoggedIn" class="btn btn-outline-primary" routerLink="/login" (click)="login()">ورود</button>
-                <button *ngIf="isLoggedIn" class="btn btn-outline-danger" routerLink="/register" (click)="logout()">خروج</button>
+                <button *ngIf="!isLoggedIn" class="btn btn-outline-primary" routerLink="/login">ورود</button>
+                <button *ngIf="isLoggedIn" class="btn btn-outline-danger" (click)="logout()">خروج</button>
             </div>
         </div>
-    </nav>
-</div>
+    </div>
+</nav>
