@@ -1,44 +1,223 @@
-<div class="container d-flex justify-content-center align-items-center" style="min-height: 70vh;">
-    <div class="card shadow-sm p-4" style="max-width: 400px; width: 100%;">
-        <div class="text-center mb-4">
-            <i class="bi bi-person-plus" style="font-size: 3rem; color: #0d6efd;"></i>
-            <h4 class="mt-2">ثبت‌نام کاربر جدید</h4>
-        </div>
-        <form>
-            <div class="mb-3">
-                <label for="username" class="form-label">نام کاربری</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-person"></i></span>
-                    <input type="text" class="form-control" id="username" placeholder="نام کاربری خود را وارد کنید">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="email" class="form-label">ایمیل</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-envelope"></i></span>
-                    <input type="email" class="form-control" id="email" placeholder="ایمیل خود را وارد کنید">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">رمز عبور</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
-                    <input type="password" class="form-control" id="password" placeholder="رمز عبور خود را وارد کنید">
-                </div>
-            </div>
-            <div class="mb-3">
-                <label for="confirmPassword" class="form-label">تکرار رمز عبور</label>
-                <div class="input-group">
-                    <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
-                    <input type="password" class="form-control" id="confirmPassword"
-                        placeholder="رمز عبور را دوباره وارد کنید">
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary w-100">ثبت‌نام</button>
-        </form>
-        <div class="text-center mt-3">
-            <span>حساب کاربری دارید؟</span>
-            <a routerLink="/login" class="text-decoration-none ms-1">وارد شوید</a>
-        </div>
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="min-height: 70vh"
+>
+  <div class="card shadow-sm p-4" style="max-width: 800px; width: 100%">
+    <div class="text-center mb-4">
+      <i class="bi bi-person-plus" style="font-size: 3rem; color: #0d6efd"></i>
+      <h4 class="mt-2">ثبت‌نام کاربر جدید</h4>
     </div>
+    <form
+      [formGroup]="registerForm"
+      (ngSubmit)="registerHandler()"
+      class="needs-validation"
+      novalidate
+    >
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="firstName" class="form-label">نام</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="firstName"
+              placeholder="نام خود را وارد کنید"
+              formControlName="firstName"
+              [class.is-invalid]="
+                registerForm.get('firstName')?.invalid &&
+                (registerForm.get('firstName')?.touched ||
+                  registerForm.get('firstName')?.dirty)
+              "
+              [class.is-valid]="
+                registerForm.get('firstName')?.valid &&
+                (registerForm.get('firstName')?.touched ||
+                  registerForm.get('firstName')?.dirty)
+              "
+            />
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">مقدار وارد شده مناسب نیست</div>
+          </div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="lastName" class="form-label">نام خانوادگی</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="lastName"
+              placeholder="نام خانوادگی خود را وارد کنید"
+              formControlName="lastName"
+              [class.is-invalid]="
+                registerForm.get('lastName')?.invalid &&
+                (registerForm.get('lastName')?.touched ||
+                  registerForm.get('lastName')?.dirty)
+              "
+              [class.is-valid]="
+                registerForm.get('lastName')?.valid &&
+                (registerForm.get('lastName')?.touched ||
+                  registerForm.get('lastName')?.dirty)
+              "
+            />
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">مقدار وارد شده مناسب نیست</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="username" class="form-label">نام کاربری</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-person"></i></span>
+            <input
+              type="text"
+              class="form-control"
+              id="username"
+              placeholder="نام کاربری خود را وارد کنید"
+              formControlName="username"
+              [class.is-invalid]="
+                registerForm.get('username')?.invalid &&
+                (registerForm.get('username')?.touched ||
+                  registerForm.get('username')?.dirty)
+              "
+              [class.is-valid]="
+                registerForm.get('username')?.valid &&
+                (registerForm.get('username')?.touched ||
+                  registerForm.get('username')?.dirty)
+              "
+            />
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">مقدار وارد شده مناسب نیست</div>
+          </div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="email" class="form-label">ایمیل</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              placeholder="ایمیل خود را وارد کنید"
+              formControlName="email"
+              [class.is-invalid]="
+                registerForm.get('email')?.invalid &&
+                (registerForm.get('email')?.touched ||
+                  registerForm.get('email')?.dirty)
+              "
+              [class.is-valid]="
+                registerForm.get('email')?.valid &&
+                (registerForm.get('email')?.touched ||
+                  registerForm.get('email')?.dirty)
+              "
+            />
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">مقدار وارد شده مناسب نیست</div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="mb-3 col-md-6">
+          <label for="password" class="form-label">رمز عبور</label>
+          <div class="input-group">
+            <span class="input-group-text"><i class="bi bi-lock"></i></span>
+            <input
+              [type]="showPassword ? 'text' : 'password'"
+              class="form-control"
+              id="password"
+              placeholder="رمز عبور خود را وارد کنید"
+              formControlName="password"
+              [class.is-invalid]="
+                registerForm.get('password')?.invalid &&
+                (registerForm.get('password')?.touched ||
+                  registerForm.get('password')?.dirty)
+              "
+              [class.is-valid]="
+                registerForm.get('password')?.valid &&
+                (registerForm.get('password')?.touched ||
+                  registerForm.get('password')?.dirty)
+              "
+            />
+            <button
+              type="button"
+              class="btn border border-start-0 bg-white"
+              tabindex="-1"
+              (click)="togglePasswordVisibility()"
+            >
+              <i
+                class="bi"
+                [ngClass]="showPassword ? 'bi-eye' : 'bi-eye-slash'"
+              ></i>
+            </button>
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">مقدار وارد شده مناسب نیست</div>
+          </div>
+        </div>
+        <div class="mb-3 col-md-6">
+          <label for="confirmPassword" class="form-label">تکرار رمز عبور</label>
+          <div class="input-group">
+            <span class="input-group-text"
+              ><i class="bi bi-lock-fill"></i
+            ></span>
+            <input
+              type="password"
+              class="form-control"
+              id="confirmPassword"
+              placeholder="رمز عبور را دوباره وارد کنید"
+              formControlName="confirmPassword"
+              [class.is-invalid]="
+                (registerForm.get('confirmPassword')?.invalid &&
+                  (registerForm.get('confirmPassword')?.touched ||
+                    registerForm.get('confirmPassword')?.dirty)) ||
+                (registerForm.errors?.['passwordMismatch'] &&
+                  (registerForm.get('confirmPassword')?.touched ||
+                    registerForm.get('confirmPassword')?.dirty))
+              "
+              [class.is-valid]="
+                registerForm.get('confirmPassword')?.valid &&
+                !registerForm.errors?.['passwordMismatch'] &&
+                (registerForm.get('confirmPassword')?.touched ||
+                  registerForm.get('confirmPassword')?.dirty)
+              "
+            />
+            <div class="valid-feedback">مقدار وارد شده مناسب است</div>
+            <div class="invalid-feedback">
+              <ng-container *ngIf="registerForm.errors?.['passwordMismatch']">
+                رمز عبور و تکرار آن یکسان نیستند
+              </ng-container>
+              <ng-container *ngIf="!registerForm.errors?.['passwordMismatch']">
+                مقدار وارد شده مناسب نیست
+              </ng-container>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="isLoadinhg || registerForm.invalid"
+      >
+        <span
+          *ngIf="isLoadinhg"
+          class="spinner-border spinner-border-sm me-2"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        <span *ngIf="!isLoadinhg">ثبت‌نام</span>
+        <span *ngIf="isLoadinhg">در حال ثبت‌نام...</span>
+      </button>
+      <!-- <button
+        type="submit"
+        class="btn btn-primary w-100"
+        [disabled]="registerForm.invalid"
+      >
+        ثبت‌نام
+      </button> -->
+    </form>
+    <div class="text-center mt-3">
+      <span>حساب کاربری دارید؟</span>
+      <a routerLink="/login" class="text-decoration-none ms-1">وارد شوید</a>
+    </div>
+  </div>
 </div>

@@ -13,8 +13,10 @@ export class AuthService {
   private readonly tokenKey = 'auth_token';
   private currentTokenSubject = new BehaviorSubject<any>(null);
 
-
-  constructor(private http: HttpService, private userContext: UserContextService) {
+  constructor(
+    private http: HttpService,
+    private userContext: UserContextService
+  ) {
     const token = localStorage.getItem(this.tokenKey);
     if (token) {
       this.currentTokenSubject.next(token);
@@ -23,17 +25,14 @@ export class AuthService {
 
   register(data: RegisterDto) {
     return this.http.post<ApiResponse<string>>('auth/register', data).pipe(
-      tap(response => {
+      tap((response) => {
         if (response.success && response.data) {
-          const token = response.data;
-          this.userContext.setToken(token);
-          this.currentTokenSubject.next(token);
-          localStorage.setItem(this.tokenKey, token);
-          this.userContext.initialize();
         } else {
-          this.userContext.clearToken();
-          this.currentTokenSubject.next(null);
-          console.error('Registration failed:', response.message, response.errors);
+          console.error(
+            'Registration failed:',
+            response.message,
+            response.errors
+          );
         }
       })
     );
@@ -41,7 +40,7 @@ export class AuthService {
 
   login(credentials: LoginDto) {
     return this.http.post<ApiResponse<string>>('auth/login', credentials).pipe(
-      tap(response => {
+      tap((response) => {
         if (response.success && response.data) {
           const token = response.data;
           this.userContext.setToken(token);
@@ -75,7 +74,8 @@ export class AuthService {
 
     try {
       const decoded = jwtDecode<DecodedToken>(token);
-      const rawRoles = decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
+      const rawRoles =
+        decoded['http://schemas.microsoft.com/ws/2008/06/identity/claims/role'];
 
       if (Array.isArray(rawRoles)) return rawRoles;
       if (typeof rawRoles === 'string') return [rawRoles];

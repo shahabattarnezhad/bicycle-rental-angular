@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, inject, ViewChild } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
@@ -7,7 +7,6 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../services/auth.service';
 import { RedirectService } from '../../services/redirect.service';
 import { LoginDto } from '../../models/LoginDto.model';
-import { ToastService } from '../../services/toast-service';
 
 
 @Component({
@@ -21,7 +20,6 @@ export class LoginComponent {
   authService = inject(AuthService);
   router = inject(Router);
   redirect = inject(RedirectService);
-  toastService = inject(ToastService);
 
   showPassword = false;
   isLoadinhg = false;
